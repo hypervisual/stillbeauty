@@ -1,0 +1,141 @@
+<form id="vouchers-form" action="%posturl%" method="post" class="ajax-form">
+	<section>
+		<h5>Gift form</h5>
+
+		<div>
+			<label>First Name <span class="text-error">*</span></label>
+			<input type="text" class="medium validate[required]" name="fname_sender">
+		</div>
+
+		<div>
+			<label>Surname <span class="text-error">*</span></label>
+			<input type="text" name="lname_sender" class="medium validate[required]">
+		</div>
+
+		<div>
+			<label>Gift Value ($)<span class="text-error">*</span></label>
+			<input type="text" name="value" class="small validate[required, custom[number]]" data-errormessage-custom-error="* Invalid currency format">			
+		</div>
+	</section>
+
+	<section>
+		<h5>Your contact details</h5>
+		<div>
+			<label>Telephone <span class="text-error">*</span></label>
+			<input type="text" class="span4 validate[required]" name="tel_sender">			
+		</div>
+
+		<div>
+			<label>Email</label>
+			<input type="text" class="large validate[condRequired[email_to_me], custom[email]]" name="email_sender">
+		</div>
+
+	</section>
+
+	<section>
+		<h5>Your address</h5>
+		<div>
+
+			<textarea class="validate[condRequired[post_to_me]]" name="address_sender"></textarea>
+		</div>
+	</section>
+
+	<section>
+		<h5>Gift recipient</h5>
+		<div>
+			<label>Surname <span class="text-error">*</span></label>
+			<input type="text" name="lname_receiver" class="medium validate[required]">
+		</div>
+
+		<div>
+			<label>First Name <span class="text-error">*</span></label>
+			<input type="text" class="medium validate[required]" name="fname_receiver">			
+		</div>
+
+		<div>
+			<label>Gender <span class="text-error">*</span></label>
+			<label class="radio inline">
+  				<input type="radio" value="Male" name="gender" class="validate[required]"> Male
+			</label>
+			<label class="radio inline">
+				<input type="radio" value="Female" name="gender" class="validate[required]"> Female
+			</label>
+		</div>
+	</section>
+
+	<section>
+		<h5>Recipient's contact details</h5>
+
+		<div>
+			<label>Telephone</label>
+			<input type="text" class="medium" name="tel_receiver">
+		</div>
+
+		<div>
+			<label>Email</label>
+			<input type="text" class="large validate[condRequired[email_to_gift_receiver], custom[email]]" name="email_receiver">
+		</div>
+	</section>
+
+	<section>
+		<h5>Recipient's address</h5>
+		<div>
+
+			<textarea class="validate[condRequired[post_to_gift_receiver]]" name="address_receiver"></textarea>
+		</div>
+	</section>
+
+	<section>
+		<h5>Message on voucher</h5>
+		<div>
+
+			<textarea name="message"></textarea>
+		</div>
+	</section>
+
+	<section>
+		<h5>Delivery options <span class="text-error">*</span></h5>
+
+		<div>
+			<label class="radio inline">
+				<input type="radio" value="email-sender" name="delivery" id="email_to_me" class="validate[required]"> Email to me
+			</label>
+		<div>
+
+		<div>
+			<label class="radio inline">
+			  	<input type="radio" value="post-sender" name="delivery" id="post_to_me" class="validate[required]"> Post to me
+			</label>			
+		</div>
+
+		<div style="display: none;">
+			<label class="checkbox inline">
+			  	<input type="checkbox" value="6" name="express_post" id="expresscheck"> Express Post (Additional $6)
+			</label>
+		</div>
+
+		<div>
+			<label class="radio inline">
+			  	<input type="radio" value="email-receiver" name="delivery" id="email_to_gift_receiver" class="validate[required]"> Email to gift receiver
+			</label>
+		</div>
+
+		<div>
+			<label class="radio inline">
+			  	<input type="radio" value="post-receiver" name="delivery" id="post_to_gift_receiver" class="validate[required]"> Post to gift receiver
+			</label>
+		</div>
+
+	</section>
+
+	<section>
+		<input type="hidden" name="nonce" value="%nonce%" />
+		<input type="hidden" name="voucher_code" value="%voucher%">
+		<input type="submit" class="button button-primary" value="Proceed to Pay" name="voucher_submit">
+
+		<p>
+			<small><span class="text-error">*</span> Required</small>
+		</p>
+	</section>
+
+</form>

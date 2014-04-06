@@ -1,0 +1,132 @@
+.shopping-cart {
+	position: absolute;
+	top: 60px;
+	right: 3px;
+	width: 300px;
+	height: auto;
+	background: $white;
+	box-shadow:   0 8px 6px -6px rgba(0, 0, 0, 0.33);
+
+	.shopping-cart-top {
+		position: relative;
+		height: 5px;
+		background: $lightBlue;
+
+		&:after {
+			position: absolute;
+			display: block;
+			content: '';
+			top: -6px;
+			right: 44px;
+			width: 0;
+			height: 0;
+			border-left: 6px solid transparent;
+			border-right: 6px solid transparent;
+			border-bottom: 6px solid $lightBlue;
+		}
+	}
+
+	.shopping-cart-list {
+		padding: 20px;
+		border: 1px solid $paleGrey;
+		border-top: 0;
+
+		.close-cart {
+			float: right;
+		}
+
+		h4 {
+			margin: 0;
+			font-size: 18px;
+		}
+		h5 {
+			margin: 0;
+			font-size: 16px;
+		}
+		p {
+			margin: 0;
+			text-transform: uppercase;
+			font-weight: bold;
+			color: $lightBlue;
+		}
+
+		ul {
+			border-top: 1px solid $lightBlue;
+			list-style-type: none;
+			margin: 10px 0 0 0;
+
+			li {
+				@include clearfix;
+				padding: 20px 0;
+				border-bottom: 1px dotted $lightBlue;
+
+				&:last-child {
+					border-bottom: 0;
+				}
+			}
+
+			img {
+				float: left;
+				height: 40px;
+				width: auto;
+				max-width: none;
+				margin-right: 20px;
+			}
+
+			.remove {
+				float: right;
+				font-size: 28px;
+				color: $red;
+				text-decoration: none;
+				border: 0 !important;
+			}
+		}
+
+		.shopping-cart-total {
+
+			border-bottom: 1px solid $lightBlue;
+			margin: 0 0  10px 0;
+
+			li {
+				border: 0;
+				text-transform: uppercase;
+				font-family: $heading-font;
+				font-size: 20px;
+
+				@include clearfix;
+
+				span {
+					float: right;
+					font-weight: bold;
+				}
+
+
+			}
+
+		}
+
+		a.checkout {
+			display: block;
+			padding: 10px 0;
+			text-transform: uppercase;
+			font-family: $heading-font;
+			font-size: 20px;
+			text-align: center;
+			color: $white;
+			font-weight: bold;
+			background: #54c5ae;
+			border: 0 !important;
+		}
+
+		.empty {
+			width: auto;
+			margin: 20px 0 0 0;
+			padding: 20px 0 0 0;
+			border-top: 1px solid $lightBlue;
+			line-height: 1.4;
+			font-weight: normal;
+			text-transform: none;
+		}
+	}
+
+}

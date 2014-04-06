@@ -1,0 +1,93 @@
+<form id="contact-form" class="ajax-form">
+
+	<section>
+		<h5>Your details</h5>
+
+		<div>
+			<label>First Name <span class="text-error">*</span></label>
+			<input type="text" class="medium validate[required]" name="fname">
+		</div>
+
+		<div>
+			<label>Surname <span class="text-error">*</span></label>
+			<input type="text" class="validate[required]" name="lname">	
+		</div>
+
+		<div>
+			<label>Gender</label>
+			<label class="radio inline">
+					<input type="radio" value="Male" name="gender"> Male
+			</label>
+			<label class="radio inline">
+			  	<input type="radio" value="Female" name="gender"> Female
+			</label>
+		</div>
+	</section>						
+
+	<section>
+		<h5>Your contat details</h5>
+
+		<div>
+			<label>Telephone</label>
+			<input type="text" class="medium" name="tel">
+		</div>
+
+		<div>
+			<label>Email</label>
+			<input type="text" class="large" name="email">	
+		</div>	
+	</section>
+
+
+	<section>
+		<h5>Your address</h5>
+		<div>
+			<textarea class="" name="address"></textarea>
+		</div>
+	</section>
+
+	<section>
+		<h5>Help us help you</h5>
+		<div>
+			<label>How did you hear about us? <span class="text-error">*</span></label>
+			<input type="text" class="large validate[required]" name="source">			
+		</div>
+
+		<div>
+			<label>What is your favourite treatment?</label>
+			<input type="text" class="large" name="favourite">
+		</div>
+	</section>		
+
+	<section>
+		<h5>Mailing list</h5>
+
+		<div>
+			<label class="radio inline">
+				<input type="radio" value="Join" name="mail"> Join
+			</label>
+			<label class="radio inline">
+			  	<input type="radio" value="Leave" name="mail"> Leave
+			  </label>
+			<label class="radio inline">
+			  	<input type="radio" value="No Change" name="mail" checked=""> No Change
+			</label>
+		</div>
+	</section>
+
+	<section>
+		<h5>Message</h5>
+		<div>
+			<textarea name="message"></textarea>
+		</div>
+	</section>
+
+	<section>
+		<div>
+			<input type="hidden" name="nonce" value="%nonce%"  />
+			<input type="submit" class="button button-primary" value="Submit Enquiry" name="enq-submit" />
+		</div>
+	</section>
+
+
+</form>

@@ -1,0 +1,103 @@
+<table class="table table-striped table-bordered">
+	<tr>
+		<td class="span3">Name</td>
+		<td>%fname_sender% %lname_sender%</td>
+	</tr>
+	<tr>
+		<td>Gift Value</td>
+		<td><strong>$%value%</strong></td>
+	</tr>
+	<tr>
+		<td>Tel</td>
+		<td>%tel_sender%</td>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td>%email_sender%</td>
+	</tr>
+	<tr>
+		<td>Address</td>
+		<td>%address_sender%</td>		
+	</tr>
+</table>
+<br>
+<h4 class="uppercase bold">Gift To</h4>
+<table class="table table-striped table-bordered">
+	<tr>
+		<td class="span3">Name</td>
+		<td>%fname_receiver% %lname_receiver%</td>
+	</tr>
+	<tr>
+		<td>Gender</td>
+		<td><strong>%gender%</strong></td>
+	</tr>
+	<tr>
+		<td>Tel</td>
+		<td>%tel_receiver%</td>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td>%email_receiver%</td>
+	</tr>
+	<tr>
+		<td>Address</td>
+		<td>%address_receiver%</td>		
+	</tr>
+</table>
+<br>
+<h4 class="uppercase bold">Preview</h4>
+<div style="border:2px dashed #ddd; padding:25px">
+	<table width="100%">
+		<tr>
+			<td width="20%">
+				<img src="%still_voucher_header%" width="100%" style="max-width:100%">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<p>%fname_receiver%,</p>
+				<p>This voucher is a <strong>$%value%</strong> gift to you from <strong>%fname_sender% %lname_sender%</strong> that may be put toward any product or treatment from Still Beauty!</p>
+
+				%message%
+
+				<p><strong>To Redeem</strong></p>
+				<p>Visit www.stillbeauty.com.au choose what you'd like to do with your voucher.<br>You can make an online booking request for a treatment, or call Joanna on 0488 416 555.<br>To arrange product purchases using this voucher, please call Joanna.</p>
+				<p><strong>Validity</strong></p>
+				<p>This voucher remains valid until <strong>%enddate%</strong>.</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<p>From %fname_sender% %lname_sender% / %tel_sender%</p>
+				<p>To %fname_receiver% %lname_receiver% / %gender%</p>
+				<p>Issued %startdate%</p>
+			</td>
+		</tr>
+	</table>
+</div>
+<br>
+%expresspost%
+
+<p>* %delivery%</p>
+<br>
+<div class="text-right">
+	<form action="%paypalurl%" method="post">
+		<input type="hidden" name="cmd" value="_cart">
+		<input type="hidden" name="upload" value="1">
+		<input type="hidden" name="currency_code" value="AUD">
+		<input type="hidden" name="business" value="joanna@stillbeauty.com.au">
+		<input type="hidden" name="item_name_1" value="Still Beauty Gift Voucher for %fname_receiver% %lname_receiver%">
+		<input type="hidden" name="amount_1" value="%value%">
+		%expresspost_fields%
+		<input type="hidden" name="custom" value='%custom%'>
+		<input type="hidden" name="return" value="%thankyouurl%">
+		<input type="hidden" name="notify_url" value="%ipnurl%">
+		<button type="submit" class="button button-primary">Pay $%total% via PayPal</button>
+	</form>
+</div>

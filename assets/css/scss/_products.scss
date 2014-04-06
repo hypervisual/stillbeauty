@@ -1,0 +1,138 @@
+.product-block {
+	h4 {
+		a {
+			display: block;
+			border: 0;
+
+			span {
+				float: right;
+				color: inherit;
+				font-weight: bold;
+			}
+
+			span[class="ion-ios7-plus-outline"] { display: inline-block; }
+
+			span[class="ion-ios7-minus-outline"] { display: none; }
+		}
+	}
+
+	ul {
+		margin: 0;
+		@include clearfix;
+
+		& > li {
+			width: 380px;
+			margin-top: 20px;
+			margin-left: 20px;
+			float: left;
+			padding: 10px;
+			border: 1px solid $paleGrey;
+			list-style-type: none;
+
+			& > ul {
+				margin: 0;
+				@include clearfix;
+
+				li {
+					margin: 0;
+					padding: 0;
+					border: 0;
+
+					float: left;
+					width: 67%;
+
+					img { 
+						width: 100%; 
+						display: block;
+					}
+
+					& > div {
+						position: relative;
+						padding-left: 30px;
+
+						h4 {
+							margin: 10px 0;
+							display: block;
+
+							span[price] {
+								float: right;
+								font-family: $default-font;
+								letter-spacing: -1px;
+								font-weight: bold;
+								margin-right: 3px;
+							}
+
+							span[price]:before {
+								content: '$';
+							}
+						}
+
+						p {
+							margin: 10px 0 0 0;
+							font-size: 13px;
+						}
+
+						ul {
+							li {
+								position: relative;
+								float: none;
+								line-height: 1.2;
+								width: 100% !important;
+								display: block;
+								font-weight: bold;
+
+								em {
+									font-size: 13px;
+									font-style: normal;
+									font-weight: normal;
+								}
+							}
+						}
+
+
+					}
+				}
+
+				li:first-child {
+					width: 33%;
+
+					form { margin: 0; }
+					.addToCart, .addToCart:focus {
+						font-family: $heading-font;
+						font-size: 16px;
+						color: $white;
+						outline-color: $white;
+						text-align: center;
+						text-transform: uppercase;
+						border: 0;
+						display: block;
+						margin: 10px 0 0 0;
+						padding: 10px 20px;
+					}
+				}
+			}
+		}
+
+
+		li:nth-child(2n+1) { 
+			margin-left: 0;
+		}
+	}
+
+	& > div { height: 0; overflow: hidden; }
+
+}
+
+
+.product-block.open {
+	h4 {
+
+		a {
+			span[class="ion-ios7-plus-outline"] { display: none; }
+
+			span[class="ion-ios7-minus-outline"] { display: inline-block; }
+		}
+	}
+
+	& > div { height: auto; }
+}

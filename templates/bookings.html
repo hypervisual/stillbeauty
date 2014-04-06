@@ -1,0 +1,109 @@
+<form id="booking-form" class="ajax-form">
+	<section>
+		<h5>About you</h5>
+
+		<div>
+			<label>First Name <span class="text-error">*</span></label>
+			<input type="text" name="fname" class="medium validate[required]">
+		</div>
+
+		<div>
+			<label>Surname <span class="text-error">*</span></label>
+			<input type="text" name="lname" class="medium validate[required]">
+		</div>
+
+		<div>
+			<label>Gender <span class="text-error">*</span></label>
+			<p>
+				<label class="radio inline"><input type="radio" value="Male" name="gender" id="gender" class="validate[required]"> Male</label>
+				<label class="radio inline"><input type="radio" value="Female" name="gender" id="gender" class="validate[required]"> Female</label>
+			</p>
+		</div>
+
+		<div>
+			<label class="radio inline no-padding-left">How would you like us to contact you? <span class="text-error">*</span></label>
+			<p>
+				<label class="radio inline"><input type="radio" value="Email" id="email" name="contact" class="validate[required]"> Email</label>
+				<label class="radio inline"><input type="radio" value="Telephone" id="tel" name="contact" class="validate[required]"> Telephone</label>
+				<label class="radio inline"><input type="radio" value="Text Message" id="text" name="contact" class="validate[required]"> Text Message</label>
+			</p>
+		</div>
+
+		<div>
+			<label>Email</label>
+			<input type="text" name="email" class="validate[condRequired[email]]">
+		</div>
+
+		<div>
+			<label>Telephone</label>
+			<input type="text" name="tel" class="medium validate[condRequired[tel]]">
+		</div>
+
+		<div>
+			<label>Mobile</label>
+			<input type="text" name="mobile" class="medium validate[condRequired[text]]">	
+		</div>
+
+		<div>
+			<label>Your Address</label>
+			<input type="text" class="span10" name="address">
+		</div>
+
+		<div>
+			<label class="checkbox"><input type="checkbox" value="Yes" name="newsletter" checked="">I would like to receive news and special offers from Still by email</label>
+		</div>
+
+
+	</section> 
+
+	<section>
+		<h5>Preferred treatment</h5>
+
+		<div>
+			<label class="muted">(Select all that apply.)</label> 
+			<label class="checkbox inline"><input type="checkbox" value="Massage" name="likes[]"> Massage</label>
+			<label class="checkbox inline"><input type="checkbox" value="Facial" name="likes[]"> Facial</label>
+			<label class="checkbox inline"><input type="checkbox" value="Wax" name="likes[]"> Wax</label>
+			<label class="checkbox inline"><input type="checkbox" value="Body" name="likes[]"> Body</label>
+			<label class="checkbox inline"><input type="checkbox" value="Tinting" name="likes[]"> Tinting</label>
+		</div>
+	</section>
+
+	<section>
+		<h5>Preferred time</h5>
+
+		<div>
+			<label>Date</label>
+			<input type="text" name="date" class="datepicker small" data-date-format="yyyy-mm-dd" data-date-autoclose="true" data-date-startdate="%today%" value="%today%">
+		</div>
+
+		<div>
+			<label>Time</label>
+			<label class="inline">Between</label>&nbsp;&nbsp;
+			<div class="bootstrap-timepicker inline" style="width: 15%;">
+				<input id="start" name="start" type="text" class="timepicker full" />
+			</div>
+
+			<label class="inline">and</label>&nbsp;&nbsp;
+			<div class="bootstrap-timepicker inline" style="width: 15%;">
+				<input id="end" name="end" type="text" class="timepicker full" />
+			</div>
+  		</div>
+	</section>
+
+	<section>
+		<h5>Additional information</h5>
+
+		<div>
+			<textarea name="additional"></textarea>
+		</div>
+	</section>
+
+	<section>
+		<div>
+			<input type="hidden" name="nonce" value="%nonce%" />
+			<input type="submit" class="button button-primary" value="Submit Booking" name="submit-booking">
+		</div>	
+	</section>
+
+</form>

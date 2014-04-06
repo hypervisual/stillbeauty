@@ -1,0 +1,19 @@
+#main-menu {
+	margin: 20px 0;
+
+	li {
+		padding: 0 20px;
+
+		a {
+			font-family: $heading-font;
+			font-size: 18px;
+			text-transform: uppercase;
+			color: $darkBlue;
+			border: 0;
+
+			&:hover {
+				color: $lightBlue;
+			}
+		}
+	}
+}

@@ -1,0 +1,76 @@
+#treatments-menu {
+	margin: 40px 0;
+
+	li {
+		font-family: $heading-font;
+		font-size: 16px;
+		text-transform: uppercase;
+
+		a {
+			color: $darkBlue;
+			border-color: transparent;
+			padding-left: 5px;
+
+			&:hover {
+				border-color: $darkBlue;
+			}
+
+			&.active {
+				color: $lightBlue;
+
+				&:hover {
+					border-color: $lightBlue;
+				}
+			}
+		}
+	}
+
+	li:before {
+		content: '  /  ';
+		white-space: pre;
+	}
+
+	li:first-child:before {
+		content: '';
+	}
+}
+
+#treatments {
+	[class*="span"] { margin-left: 0; }
+
+	div > img {
+		margin-bottom: 20px;
+	}
+
+	aside {
+		p {
+			font-size: 12px;
+		}		
+	}
+
+
+	h6 {
+		margin: 0;
+	}
+
+	.product {
+		@include clearfix;
+	}
+
+	.price-badge {
+		display: block;
+		margin: 0 auto;
+		width: 60px;
+		height: 60px;
+		border-radius: 30px;
+		background: $darkBlue;
+
+		line-height: 60px;
+		text-align: center;
+		font-family: $heading-font;
+		font-size: 24px;
+		color: $white;
+
+		margin-left: 25%;
+	}
+}
