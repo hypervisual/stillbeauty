@@ -33,6 +33,15 @@
 
 		.close-cart {
 			float: right;
+			padding: 3px;
+			margin-top: -3px;
+			border: 1px solid $lightBlue;
+
+			&:hover {
+				color: $red;
+				border-color: $red;
+				opscity: 0.75;
+			}
 		}
 
 		h4 {
