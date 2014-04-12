@@ -216,7 +216,7 @@ $(document).ready(function () {
  
             $.post(StillBeauty.ajaxurl, payload, function(data) { 
                 StillBeauty.App.Modal.hide();
-                html  = "<p><span class=\"ion-ios7-information-outline\"></span> Message sent.</p><a href=\"#\" class=\"modal-close\"></a>";
+                html  = "<p>Message sent.</p><a href=\"#\" class=\"modal-close\"></a>";
                 StillBeauty.App.Modal.showMessage('#modal-message', html);
                 $('#booking-form')[0].reset();
             }, 'json')
@@ -255,7 +255,7 @@ $(document).ready(function () {
  
             $.post(StillBeauty.ajaxurl, payload, function(data) { 
                 StillBeauty.App.Modal.hide();
-                html  = "<p><span class=\"ion-ios7-information-outline\"></span> Message sent.</p><a href=\"#\" class=\"modal-close\"></a>";
+                html  = "<p>Message sent.</p><a href=\"#\" class=\"modal-close\"></a>";
                 StillBeauty.App.Modal.showMessage('#modal-message', html);
                 $('#contact-form')[0].reset();
             }, 'json')
