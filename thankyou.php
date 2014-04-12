@@ -14,13 +14,13 @@ get_header();
             if (($result = $app->processPayment()) != NULL) {
             	// success
             	$page = get_page_by_title('Success');
-            	echo apply_filters( 'the_content', $page->page_content );
-            	echo "<p>" . $result . "</p>";
+            	echo apply_filters( 'the_content', $page->post_content );
+
             } else {
             	// failure
             	$page = get_page_by_title('Failure');
 
-            	echo apply_filters( 'the_content', $page->page_content );
+            	echo apply_filters( 'the_content', $page->post_content );
             }
             ?>
         </div>

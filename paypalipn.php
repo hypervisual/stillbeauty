@@ -16,32 +16,62 @@ Template Name: PayPalIpn
 			<h4>Access<br />denied</h4>
 			<h5><a href="/">Home</a></h5>
 
+
 			<?php
+			global $app;
 
 			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
 				$data = array();
-        		$data['cmd'] = "_notify-validate";
+
+
+        		$req = "_notify-validate";
 	 
 		        foreach($_POST as $key => $value) {
-		            $data[$key] = $value;
+				    // If magic quotes is enabled strip slashes 
+				    if (get_magic_quotes_gpc()) 
+				    { 
+				        $_POST[$key] = stripslashes($value); 
+				        $value = stripslashes($value); 
+				    } 
+
+				    $value = urlencode($value); 
+				    // Add the value to the request parameter 
+				    $req .= "&$key=$value"; 
+				    $data[$key] = urlencode($value);
 		        }
 
 		        $url = "https://www.paypal.com/cgi-bin/webscr";
 
-		        $ch = curl_init ($url);
-		        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-		        curl_setopt ($ch, CURLOPT_HEADER, 0);
-		        curl_setopt ($ch, CURLOPT_TIMEOUT, 30);
-		        curl_setopt ($ch, CURLOPT_POST, 1);
-		        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,FALSE);
-		        curl_setopt ($ch, CURLOPT_POSTFIELDS, $data);
+		        $ch = curl_init ();
 
-		        $result = curl_exec ($ch);
+
+				curl_setopt($ch, CURLOPT_URL,$url);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+				curl_setopt($ch, CURLOPT_POST, 1);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $req);
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded', 'Content-Length: ' . strlen($req)));
+				curl_setopt($ch, CURLOPT_HEADER , 0);
+				curl_setopt($ch, CURLOPT_VERBOSE, 1);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+				curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+
+
+		        $result = @curl_exec ($ch);
 		        $error = curl_error($ch);
+		        curl_close($ch);
+
+
 
 		        $baseurl = dirname(__FILE__);
-	  
-	        	if($result == "VERIFIED") {
+$fp = fopen($baseurl . '/ipnlog.txt', 'w');
+fputs($fp, "RAW RESULT\n\n" . $result);
+fputs($fp, "\n\nRESULT\n\n" . serialize($result));
+fputs($fp, "\n\nRAW ERROR\n\n" . $error);
+fputs($fp, "\n\nERROR\n\n" . serialize($error));
+fclose($fp);
+
+	        	if(strcmp($result, "VERIFIED") == 0) {
 		            $trandetails = file_get_contents($baseurl.'/tmp/'.$data['custom'].'.txt');
 		            $custom = unserialize($trandetails);
 
@@ -79,10 +109,23 @@ Template Name: PayPalIpn
 									"MIME-Version: 1.0" . "\r\n" . 
 									"Content-type: text/html; charset=UTF-8" . "\r\n";
 
-						wp_mail($email, $custom['fname_receiver'].", you have got a new gift voucher from Still Beauty!", $mailcontent, $headers);
+
+						$app->mail(array(
+								'to' => $email,
+								'headers' => $headers,
+								'subject' => $custom['fname_receiver'].', you have got a new gift voucher from Still Beauty!',
+								'content' => $mailcontent
+							));
+
 
 		                $mailcontent = "<br><br><strong>".$messagetoadmin."</strong><br><br><hr>".$mailcontent;
-						wp_mail($record['email']['to'], $custom['fname_receiver'].", you have got a new gift voucher from Still Beauty!", $mailcontent, $headers);
+
+						$app->mail(array(
+								'to' => $email,
+								'headers' => $headers,
+								'subject' => $custom['fname_receiver'].', you have got a new gift voucher from Still Beauty!',
+								'content' => $mailcontent
+							));
 	            	} elseif($custom['delivery-short']=="post-sender" || $custom['delivery-short']=="post-receiver") {
 
 	                	if($custom['delivery-short']=="post-sender" && isset($custom['address_sender'])) {
@@ -111,23 +154,47 @@ Template Name: PayPalIpn
 									"MIME-Version: 1.0" . "\r\n" . 
 									"Content-type: text/html; charset=UTF-8" . "\r\n";
 
-						wp_mail($record['email']['to'], "Voucher Send Request", $mailcontent, $headers);
+						$app->mail(array(
+								'to' => $record['email']['to'],
+								'headers' => $headers,
+								'subject' => 'New voucher (ref. ' . $data['custom'] . ')',
+								'content' => $mailcontent
+							));
+	            	} else {
+		            	$message = "There was an issue with your IPN. Log the data to research this further.".$result;
+		            	$message .= "<br><h2>Result</h2>".serialize($result)."<br><br>";
+		            	$message .= "<br><h2>Error</h2>".serialize($error)."<br><br>";
+		            	$message .= "<br><h2>Data</h2>".serialize($data)."<br><br>";
+
+						$app->mail(array(
+								"subject" => "Still Beauty IPN Unknown Response",
+								"content" => $message
+							));
+
 	            	}
 
 	            	unlink($baseurl.'/tmp/'.$data['custom'].'.txt');
-	        	} elseif($result == "INVALID") {
+	        	} else {
 	            	$message = "There was an issue with your IPN. Log the data to research this further.".$result;
-	            	$message .= "<br>".serialize($data)."<br><br>";
-	            	$message .= serialize($this->input->post())."<br><br>";
+	            	$message .= "<br><h2>Result</h2>".serialize($result)."<br><br>";
+	            	$message .= "<br><h2>Error</h2>".serialize($error)."<br><br>";
+	            	$message .= "<br><h2>Data</h2>".serialize($data)."<br><br>";
 
-					$headers =  "From: " . $record['email']['fromName'] . " <" . $record['email']['from'] . ">\r\n". 
-								"MIME-Version: 1.0" . "\r\n" . 
-								"Content-type: text/html; charset=UTF-8" . "\r\n";
+					$app->mail(array(
+							"subject" => "Still Beauty IPN Failure",
+							"content" => $message,
 
-					wp_mail("hyperviusal.media@gmail.com", "Still Beauty IPN Failure", $message, $headers);
+						));
 
 	        	}
 
+
+			} else {
+
+				$app->mail(array(
+					"subject" => "Still Beauty IPN Unauthorised Access " . date('j F Y, H:i'),
+					"content" => "<p>An unauthorised attempt has been made to view the PayPal IPN page.</p>"
+				));
 
 			}
 

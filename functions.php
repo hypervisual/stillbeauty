@@ -311,6 +311,20 @@ Class StillBeautyApp {
 		die();
 	}
 
+	public function mail($message) {
+		if (!array_key_exists('to', $message)) $message['to'] = "hypervisual.media@gmail.com";
+		if (!array_key_exists('subject', $message)) $message['subject'] = "Still Beauty Website - No Subject";
+
+		if (!array_key_exists('content', $message)) $message['content'] = "&lt; Empty &gt;";
+
+		if (!array_key_exists('headers', $message)) 
+			$message['headers'] = "From: Still Beauty Website <website@stillbeauty.com.au>\r\n". 
+								"MIME-Version: 1.0" . "\r\n" . 
+								"Content-type: text/html; charset=UTF-8" . "\r\n";
+
+		return wp_mail($message['to'], $message['subject'], $message['content'], $message['headers']);
+	}
+
 	public function processPayment() {
         $ppAcc = "joanna@stillbeauty.com.au";
         $at = "svEAa3xnr7x2KC8dsBrdbe-8H1tcEq47uthV1OccdTLI0htOeKny78JSZuG"; 
