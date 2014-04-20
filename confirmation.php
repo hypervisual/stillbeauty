@@ -43,35 +43,34 @@ get_header();
             $total = (isset($_POST['express_post']) && $deliveryshort == "post-sender") ? 6.0 + floatval($_POST['value']) : floatval($_POST['value']);
 
             $params = array(
-                    '%fname_sender%' => $_POST['fname_sender'],
-                    '%lname_sender%' => $_POST['lname_sender'],
-                    '%value%' => number_format($_POST['value'], 2),
-                    '%tel_sender%' => $_POST['tel_sender'],
-                    '%email_sender%' => $_POST['email_sender'],
-                    '%address_sender%' => $_POST['address_sender'],
-                    '%fname_receiver%' => $_POST['fname_receiver'],
-                    '%lname_receiver%' => $_POST['lname_receiver'],
-                    '%gender%' => $_POST['gender'],
-                    '%tel_receiver%' => $_POST['tel_receiver'],
-                    '%email_receiver%' => $_POST['email_receiver'],
-                    '%address_receiver%' => $_POST['address_receiver'],
-                    '%message%' => $message,
-                    '%expresspost%' => $expresspost,
-                    '%expresspost_fields%' => $expresspostfields,
-                    '%delivery%' => $delivery,
-                    '%custom%' => $_POST['voucher_code'],
-                    '%still_voucher_header%' => $app->getVoucherHeader(),
-                    '%enddate%' => date('jS \of F, Y', strtotime('+1 year')),
-                    '%startdate%' => date("F j, Y, g:i a"),
-                    '%paypalurl%' => $app->getPayPalUrl(),
-                    '%thankyouurl%' => $app->getThankyouUrl(),
-                    '%ipnurl%' => $app->getIpnUrl(),
-                    '%total%' => $total
+                    'fname_sender' => $_POST['fname_sender'],
+                    'lname_sender' => $_POST['lname_sender'],
+                    'value' => number_format($_POST['value'], 2),
+                    'tel_sender' => $_POST['tel_sender'],
+                    'email_sender' => $_POST['email_sender'],
+                    'address_sender' => $_POST['address_sender'],
+                    'fname_receiver' => $_POST['fname_receiver'],
+                    'lname_receiver' => $_POST['lname_receiver'],
+                    'gender' => $_POST['gender'],
+                    'tel_receiver' => $_POST['tel_receiver'],
+                    'email_receiver' => $_POST['email_receiver'],
+                    'address_receiver' => $_POST['address_receiver'],
+                    'message' => $message,
+                    'expresspost' => $expresspost,
+                    'expresspost_fields' => $expresspostfields,
+                    'delivery' => $delivery,
+                    'custom' => $_POST['voucher_code'],
+                    'still_voucher_header' => $app->getVoucherHeader(),
+                    'enddate' => date('jS \of F, Y', strtotime('+1 year')),
+                    'startdate' => date("F j, Y, g:i a"),
+                    'paypalurl' => $app->getPayPalUrl(),
+                    'thankyouurl' => $app->getThankyouUrl(),
+                    'total' => $total
                 );
 
-            $app->saveVoucher($_POST);
+            //$app->saveVoucher($_POST);
 
-            $html = $app->render('/templates/confirmation.html', $params);
+            $html = $app->render('confirmation.html', $params);
             echo $html;
 
             ?>
@@ -79,5 +78,27 @@ get_header();
     <?php endwhile; ?>
     <?php endif; ?>
 <?php
+wp_localize_script( 'stillbeauty', 'confirmation', array(
+                    'tx' => array( 
+                                    'fname_sender' => $_POST['fname_sender'],
+                                    'lname_sender' => $_POST['lname_sender'],
+                                    'value' => $_POST['value'],
+                                    'tel_sender' => $_POST['tel_sender'],
+                                    'email_sender' => $_POST['email_sender'],
+                                    'address_sender' => $_POST['address_sender'],
+                                    'lname_receiver' => $_POST['lname_receiver'],
+                                    'fname_receiver' => $_POST['fname_receiver'],
+                                    'gender' => $_POST['gender'],
+                                    'tel_receiver' => $_POST['tel_receiver'],
+                                    'email_receiver' => $_POST['email_receiver'],
+                                    'address_receiver' => $_POST['address_receiver'],
+                                    'message' => $_POST['message'],
+                                    'express_post' => $expresspost,
+                                    'expresspost_fields' => $expresspostfields,
+                                    'delivery' => $_POST['delivery'],
+                                    'startdate' => date("F j, Y, g:i a"),
+                                    'enddate' => date('jS \of F, Y', strtotime('+1 year'))
+                                ),
+                    'custom' => $_POST['voucher_code']));  
 get_footer();
 ?>

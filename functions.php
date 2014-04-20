@@ -11,6 +11,7 @@ function set_html_content_type() {
 
 
 define("STILLBEAUTY_THEME_URL", get_site_url() . '/wp-content/themes/stillbeauty');
+
 define("STILLBEAUTY_THEME_DIR", dirname(__FILE__));
 define("STILLBEAUTY_THEME_TPL_DIR", dirname(__FILE__) . '/templates/');
 
@@ -18,6 +19,7 @@ include(STILLBEAUTY_THEME_DIR . '/lib/config.php');
 include(STILLBEAUTY_THEME_DIR . '/lib/utils.php');
 include(STILLBEAUTY_THEME_DIR . '/lib/catalogue.php');
 include(STILLBEAUTY_THEME_DIR . '/lib/cart.php');
+include(STILLBEAUTY_THEME_DIR . '/lib/admin.php');
 
 $appdata = array();
 
@@ -113,17 +115,17 @@ Class StillBeautyApp {
 
 	public function render($tpl, $params = NULL) {
 
-		if (file_exists(STILLBEAUTY_THEME_DIR . $tpl)) {
-			$html = file_get_contents( STILLBEAUTY_THEME_DIR . $tpl );
+		if (file_exists(STILLBEAUTY_THEME_TPL_DIR . $tpl)) {
+			$html = file_get_contents( STILLBEAUTY_THEME_TPL_DIR . $tpl );
 
 
 			if (!empty($params)) {
 				foreach($params as $search => $replace) {
-					$html = str_replace($search, $replace, $html);
+					$html = str_replace('%'.$search.'%', $replace, $html);
 				}
 			}
 		} else {
-			$html = "File not found: " . STILLBEAUTY_THEME_DIR . $tpl;
+			$html = "File not found: " . STILLBEAUTY_THEME_TPL_DIR . $tpl;
 		}
 
 
@@ -131,6 +133,32 @@ Class StillBeautyApp {
 
 	}
 
+	public function recordTransaction() {
+		session_start();
+
+		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+
+			if (array_key_exists('transaction', $_POST)) {
+				global $wpdb;
+
+				$wpdb->insert(  'sb_transactions', 
+							    array('tx_ref' => $_POST['custom'],
+							  		  'tx_details' => serialize($_POST['transaction']),
+							  		  'status' => 'Pending',
+							  		  'type' => 'Voucher'),
+							    array('%s', '%s', '%s', '%s')
+							  );
+			}
+
+			echo json_encode(array('status' => '1'));
+
+		}
+		else {
+			header("Location: ".$_SERVER["HTTP_REFERER"]);
+		}
+
+		die();
+	}
 	
 	public function rmFromCart() {
 		session_start();
@@ -219,7 +247,7 @@ Class StillBeautyApp {
 	public function renderHtml( $atts, $content = "" ) {
 		$nonce = (array_key_exists('nonce', $atts)) ? wp_create_nonce($atts['nonce']) : "";
 		$posturl = (array_key_exists('posturi', $atts)) ? site_url($atts['posturi']) : "";
-		return self::render($atts['src'], array('%today%' => date('Y-M-d'), '%voucher%' => substr(md5(rand()), 0, 7), '%nonce%' => $nonce, '%posturl%' => $posturl));
+		return self::render($atts['src'], array('today' => date('Y-M-d'), 'voucher' => substr(md5(rand()), 0, 7), 'nonce' => $nonce, 'posturl' => $posturl));
 	}
 
 	public function sendBooking() {
@@ -390,8 +418,17 @@ Class StillBeautyApp {
 
 <?php
 			}
-		endif;
 
+			global $wpdb;
+
+			$wpdb->insert(  'sb_transactions', 
+						    array('tx_ref' => substr(md5(rand()), 0, 7),
+						  		  'tx_details' => serialize($cart),
+						  		  'status' => 'Pending',
+						  		  'type' => 'Products'),
+						    array('%s', '%s', '%s', '%s')
+						  );
+		endif;
 ?>
 
 		</form>
@@ -489,6 +526,8 @@ add_action('wp_ajax_sb_send_booking', array('StillBeautyApp', 'sendBooking'));
 add_action('wp_ajax_nopriv_sb_send_booking', array('StillBeautyApp', 'sendBooking'));
 add_action('wp_ajax_sb_send_contact', array('StillBeautyApp', 'sendContact'));
 add_action('wp_ajax_nopriv_sb_send_contact', array('StillBeautyApp', 'sendContact'));
+add_action('wp_ajax_sb_record_tx', array('StillBeautyApp', 'recordTransaction'));
+add_action('wp_ajax_nopriv_sb_record_tx', array('StillBeautyApp', 'recordTransaction'));
 
 if (is_admin()) {
 	add_action('wp_dashboard_setup', 'stillbeauty_setup_dashboard');

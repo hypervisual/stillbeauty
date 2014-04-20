@@ -237,6 +237,29 @@ $(document).ready(function () {
         return false;
     });
 
+    $('#confirmation form button[type=submit]').on('click', function(e) {
+        e.preventDefault();
+
+        var payload = {
+            action: 'sb_record_tx',
+            custom: confirmation.custom,
+            transaction: confirmation.tx
+        }
+
+        if (!mutex) {
+
+            var html  = "<p><span class='ion-loading-c'></span> Redirecting you to PayPal...</p>";
+            StillBeauty.App.Modal.showMessage('#modal-message', html);
+
+            $.post(StillBeauty.ajaxurl, payload, function(data) {
+                $('#confirmation form').trigger('submit');
+            }, 'json')
+            .always(function() {
+                mutex = false;
+            });;
+        }
+    })
+
     $('#contact-form').on('submit', function(e) {
         e.preventDefault();
 
