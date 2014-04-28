@@ -9,4 +9,24 @@
 			border: 1px solid $paleGrey;
 		}
 	}
+
+	.image-row {
+		@include clearfix;
+
+		margin: 20px 0;
+
+		li {
+			float: left;
+			width: 33.3%;
+			list-style-type: none;
+
+			padding: 0 20px;
+
+			img {
+				display: block;
+				width: 100%;
+				border-radius: 110px;
+			}
+		}
+	}
 }

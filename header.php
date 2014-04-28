@@ -65,7 +65,7 @@
 				<li><a href="/about">About</a></li>
 				<li><a href="/treatments">Treatments</a></li>
 				<li><a href="/products">Products</a></li>
-				<li><a href="/"><img src="http://www.stillbeauty.com.au/img/still-blue.jpg" width="158" style="max-width:158px"></a></li>
+				<li><a href="/"><img src="http://www.stillbeauty.com.au/wp-content/themes/stillbeauty/assets/images/still-blue.png" width="158" style="max-width:158px"></a></li>
 				<li><a href="/bookings">Bookings</a></li>
 				<li><a href="/vouchers">Vouchers</a></li>
 				<li><a href="/contact">Contact</a></li>

@@ -40,7 +40,7 @@ get_header();
 
             $expresspost = (isset($_POST['express_post'])) ? '<p>* You have chosen Express post. An additional $6 will be added to the total.</p>' : '';
             $expresspostfields = (isset($_POST['express_post']) && $deliveryshort == "post-sender") ? '<input type="hidden" name="item_name_2" value="Express Post"><input type="hidden" name="amount_2" value="6.00">' : '';
-            $total = (isset($_POST['express_post']) && $deliveryshort == "post-sender") ? 6.0 + floatval($_POST['value']) : floatval($_POST['value']);
+            $total = (isset($_POST['express_post']) && $_POST['delivery-short'] == "post-sender") ? 6.0 + floatval($_POST['value']) : floatval($_POST['value']);
 
             $params = array(
                     'fname_sender' => $_POST['fname_sender'],

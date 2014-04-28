@@ -286,7 +286,7 @@ Class StillBeautyApp {
 
 			wp_mail($record['email']['to'], "Booking Request", $mailcontent, $headers);
 
-			echo json_encode(array('status' => 'OK'));
+			echo json_encode(array('status' => 'OK', 'headers' => $headers, 'record' => $record));
 
 		} else {
 			header("Location: ".$_SERVER["HTTP_REFERER"]);
