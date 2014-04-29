@@ -529,6 +529,25 @@ add_action('wp_ajax_nopriv_sb_send_contact', array('StillBeautyApp', 'sendContac
 add_action('wp_ajax_sb_record_tx', array('StillBeautyApp', 'recordTransaction'));
 add_action('wp_ajax_nopriv_sb_record_tx', array('StillBeautyApp', 'recordTransaction'));
 
+function google_analytics_tracking_code(){
+?>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50474622-1', 'stillbeauty.com.au');
+  ga('send', 'pageview');
+
+</script>
+
+<?php 
+}
+
+add_action('wp_footer', 'google_analytics_tracking_code');
+
 if (is_admin()) {
 	add_action('wp_dashboard_setup', 'stillbeauty_setup_dashboard');
 
