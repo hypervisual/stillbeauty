@@ -59,12 +59,14 @@
 		<tr>
 			<td colspan="2">
 				<p>%fname_receiver%,</p>
-				<p>This voucher is a <strong>$%value%</strong> gift to you from <strong>%fname_sender% %lname_sender%</strong> that may be put toward any product or treatment from Still Beauty!</p>
+
+				%intro%
+				
 
 				%message%
 
 				<p><strong>To Redeem</strong></p>
-				<p>Visit www.stillbeauty.com.au choose what you'd like to do with your voucher.<br>You can make an online booking request for a treatment, or call Joanna on 0488 416 555.<br>To arrange product purchases using this voucher, please call Joanna.</p>
+				%redeem%
 				<p><strong>Validity</strong></p>
 				<p>This voucher remains valid until <strong>%enddate%</strong>.</p>
 			</td>
@@ -90,6 +92,7 @@
 	<form action="%paypalurl%" method="post">
 		<input type="hidden" name="cmd" value="_cart">
 		<input type="hidden" name="upload" value="1">
+		<input type="hidden" name="promo" value="%promo%" />
 		<input type="hidden" name="currency_code" value="AUD">
 		<input type="hidden" name="business" value="joanna@stillbeauty.com.au">
 		<input type="hidden" name="item_name_1" value="Still Beauty Gift Voucher for %fname_receiver% %lname_receiver%">

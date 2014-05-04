@@ -19,6 +19,7 @@ class TransactionsList extends WP_List_Table {
 		$columns = array('cb' => '<input type="checkbox" />',
 						 'tx_ref' => 'Reference',
 						 'tx_date' => 'Date',
+						 'promo' => 'Promotion',
 						 'type' => 'Type',
 			             'status' => 'Status');
 
@@ -139,6 +140,7 @@ class TransactionsList extends WP_List_Table {
 	    case 'status':
 	    case 'type':
 	    case 'tx_date':
+	    case 'promo':
 
 	      return stripslashes($item->$column_name);
 

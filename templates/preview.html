@@ -23,14 +23,18 @@
 				<tr>
 					<td width="20">&nbsp;</td>
 					<td>
-						<p><em>Dear %fname_receiver%</em>,</p>
-						<p>This voucher, value $%value%, is a gift to you from <strong>%fname_sender% %lname_sender%</strong> that may be put toward any product or treatment from Still Beauty!</p>
+						<p style="margin: 1em 0; line-height: 2;"><em>Dear %fname_receiver%</em>,</p>
 
+						%intro%
+						
+						<p style="margin: 1em 0; line-height: 2;"><strong>Message</strong></p>
 						<p>%message%</p>
 
 						<p style="margin: 1em 0; line-height: 2;"><strong>To Redeem</strong></p>
-						<p style="margin: 1em 0; line-height: 2;">Visit www.stillbeauty.com.au choose what you'd like to do with your voucher.<br>You can make an online booking request for a treatment, or call Joanna on 0488 416 555.</p>
-						<p style="margin: 1em 0; line-height: 2;">To arrange product purchases using this voucher, please call Joanna.</p>
+
+						%redeem% 
+						
+						
 						<p style="margin: 1em 0; line-height: 2;"><strong>Validity</strong></p>
 						<p style="margin: 1em 0; line-height: 2;">This voucher remains valid until <strong>%enddate%</strong>.</p>
 					</td>

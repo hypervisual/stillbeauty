@@ -243,6 +243,7 @@ $(document).ready(function () {
         var payload = {
             action: 'sb_record_tx',
             custom: confirmation.custom,
+            promo: confirmation.promo,
             transaction: confirmation.tx
         }
 

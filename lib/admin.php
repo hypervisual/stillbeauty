@@ -109,7 +109,16 @@ class StillBeautyAdminPage {
 	public function put_preview($data) {
 		global $app;
 
-		$data['still_voucher_header'] = STILLBEAUTY_HEADER_URL;
+		$data['still_voucher_header'] = $app->getVoucherHeader($data['promo']);
+
+        if (stripslashes($data['promo']) == "Mother's Day") {
+            $data['intro'] = "<p style='margin: 1em 0; line-height: 2;'>This voucher is a gift to you from <strong>" . $data['fname_sender'] . " " . $data['lname_sender'] . "</strong> and entitles you to: 1 hour Massage of your choice, a 30 minute customised facial and a box of Still Beauty tea.</p>";
+            $data['redeem'] = "<p style='margin: 1em 0; line-height: 2;'>Either jump onto our website and request a booking, or call Joanna 0488 416 555.</p>";
+
+        } else {
+            $data['intro'] = "<p style='margin: 1em 0; line-height: 2;'>This voucher is a <strong>$" . number_format($_POST['value'], 2) . "</strong> gift to you from <strong>" . $data['fname_sender'] . " " . $data['lname_sender'] . "</strong> that may be put toward any product or treatment from Still Beauty!</p>";
+            $data['redeem'] = "<p style='margin: 1em 0; line-height: 2;'>Visit www.stillbeauty.com.au choose what you'd like to do with your voucher.<br>You can make an online booking request for a treatment, or call Joanna on 0488 416 555.<br>To arrange product purchases using this voucher, please call Joanna.</p><p style='margin: 1em 0; line-height: 2;'>To arrange product purchases using this voucher, please call Joanna.</p>";
+        }
 
 		if ($data['delivery'] == 'email-sender') {
 			$data['fname'] = $data['fname_sender'];
@@ -125,15 +134,24 @@ class StillBeautyAdminPage {
 		echo $html;
 	}
 
-	public function send_voucher($data) {
+	public function send_voucher($data, $promo) {
 		global $app;
 
-		$data['still_voucher_header'] = STILLBEAUTY_HEADER_URL;
+		$data['still_voucher_header'] = $app->getVoucherHeader($promo);
 
 		$baseurl = dirname(__FILE__);
         $filepath = $baseurl.'/../assets/json/email.json';
         $string = file_get_contents($filepath);
         $record = json_decode($string,true);
+
+        if (stripslashes($promo) == "Mother's Day") {
+            $data['intro'] = "<p style='margin: 1em 0; line-height: 2;'>This voucher is a gift to you from <strong>" . $data['fname_sender'] . " " . $data['lname_sender'] . "</strong> and entitles you to: 1 hour Massage of your choice, a 30 minute customised facial and a box of Still Beauty tea.</p>";
+            $data['redeem'] = "<p style='margin: 1em 0; line-height: 2;'>Either jump onto our website and request a booking, or call Joanna 0488 416 555.</p>";
+
+        } else {
+            $data['intro'] = "<p class='margin: 1em 0; line-height: 2;'>This voucher is a <strong>$" . number_format($_POST['value'], 2) . "</strong> gift to you from <strong>" . $data['fname_sender'] . " " . $data['lname_sender'] . "</strong> that may be put toward any product or treatment from Still Beauty!</p>";
+            $data['redeem'] = "<p class='margin: 1em 0; line-height: 2;'>Visit www.stillbeauty.com.au choose what you'd like to do with your voucher.<br>You can make an online booking request for a treatment, or call Joanna on 0488 416 555.<br>To arrange product purchases using this voucher, please call Joanna.</p><p style='margin: 1em 0; line-height: 2;'>To arrange product purchases using this voucher, please call Joanna.</p>";
+        }
 
 
 		if ($data['delivery'] == 'email-sender') {
@@ -195,7 +213,7 @@ class StillBeautyAdminPage {
 			$tx = $wpdb->get_row('SELECT * FROM sb_transactions WHERE id = '.$_REQUEST['id'].' LIMIT 1');
 			$data = unserialize($tx->tx_details);
 
-			self::send_voucher($data);
+			self::send_voucher($data, $tx->promo);
 		} 
 
 		if ($_REQUEST['action'] == 'view-transaction') {
@@ -284,6 +302,8 @@ class StillBeautyAdminPage {
 			echo "<h3>Preview</h3>";
 			
 			echo "<form action='' method='post'>";
+
+			$data['promo'] = $tx->promo;
 
 			self::put_preview($data);
 

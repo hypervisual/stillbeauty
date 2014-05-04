@@ -12,9 +12,9 @@
 			<input type="text" name="lname_sender" class="medium validate[required]">
 		</div>
 
-		<div>
+		<div style="display: none;">
 			<label>Gift Value ($)<span class="text-error">*</span></label>
-			<input type="text" name="value" class="small validate[required, custom[number]]" data-errormessage-custom-error="* Invalid currency format">			
+			<input type="text" value="150" name="value" class="small validate[required, custom[number]]" data-errormessage-custom-error="* Invalid currency format">			
 		</div>
 	</section>
 
@@ -98,7 +98,7 @@
 
 		<div>
 			<label class="radio inline">
-				<input type="radio" value="email-sender" name="delivery" id="email_to_me" class="validate[required]"> Email to me
+				<input type="radio" value="email-sender" name="delivery" id="email_to_me" class="validate[required]" /> Email to me
 			</label>
 		</div>
 
@@ -130,7 +130,7 @@
 
 	<section>
 		<input type="hidden" name="nonce" value="%nonce%" />
-		<inpuy type="hidden" name="promo" value="" />
+		<input type="hidden" name="promo" value="Mother's Day" />
 		<input type="hidden" name="voucher_code" value="%voucher%">
 		<input type="submit" class="button button-primary" value="Proceed to Pay" name="voucher_submit">
 

@@ -90,7 +90,10 @@ Class StillBeautyApp {
 			return 'home';
 	} 
 
-	public function getVoucherHeader() {
+	public function getVoucherHeader($promo) {
+		if (stripslashes($promo) == "Mother's Day") {
+			return STILLBEAUTY_THEME_URL . '/assets/images/still_voucher_header_alt.jpg';	
+		}
 		return STILLBEAUTY_THEME_URL . '/assets/images/still_voucher_header.jpg';
 	}
 
@@ -144,6 +147,7 @@ Class StillBeautyApp {
 				$wpdb->insert(  'sb_transactions', 
 							    array('tx_ref' => $_POST['custom'],
 							  		  'tx_details' => serialize($_POST['transaction']),
+							  		  'promo' => $_POST['promo'],
 							  		  'status' => 'Pending',
 							  		  'type' => 'Voucher'),
 							    array('%s', '%s', '%s', '%s')
