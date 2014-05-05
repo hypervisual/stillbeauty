@@ -63,7 +63,7 @@ get_header();
                     'tel_receiver' => $_POST['tel_receiver'],
                     'email_receiver' => $_POST['email_receiver'],
                     'address_receiver' => $_POST['address_receiver'],
-                    'message' => $message,
+                    'message' => stripslashes($message),
                     'expresspost' => $expresspost,
                     'expresspost_fields' => $expresspostfields,
                     'delivery' => $delivery,

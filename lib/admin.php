@@ -81,6 +81,7 @@ class StillBeautyAdminPage {
 
 		$data['value']  = number_format($data['value'], 2);
 		$data['notes']  = stripslashes($data['notes']);
+		$data['message'] = stripslashes(stripslashes($data['message']));
 		$html = $app->render('voucher_details.html', $data);
 		echo $html;
 	}
@@ -130,6 +131,8 @@ class StillBeautyAdminPage {
 			$data['email'] = $data['email_receiver'];
 		}
 
+		$data['message'] = stripslashes(stripslashes($data['message']));
+
 		$html = $app->render('preview.html', $data);
 		echo $html;
 	}
@@ -163,6 +166,8 @@ class StillBeautyAdminPage {
 			$lname = $data['lname_receiver'];
 			$email = $data['email_receiver'];
 		}
+
+		$data['message'] = stripslashes(stripslashes($data['message']));
 
 		$html = $app->render('voucher_email.html', $data);
 
