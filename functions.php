@@ -44,8 +44,8 @@ $appdata['js'] = array(
 					array('handle' => 'timepicker', 'src' => STILLBEAUTY_THEME_URL . '/assets/js/bootstrap-timepicker.min.js'),
 					array('handle' => 'infotip', 'src' => STILLBEAUTY_THEME_URL . '/assets/js/infotip.js'),
 					array('handle' => 'modal', 'src' => STILLBEAUTY_THEME_URL . '/assets/js/modal.js'),
+					array('handle' => 'stillbeauty', 'src' => STILLBEAUTY_THEME_URL . '/assets/js/bigSlide.min.js')
 					array('handle' => 'stillbeauty', 'src' => STILLBEAUTY_THEME_URL . '/assets/js/stillbeauty.js')
-
 				  );
 
 $appdata['remove_header_actions'] = array('wp_generator', 

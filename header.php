@@ -23,6 +23,7 @@
 
 	?></title>
 
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0;">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<link href="favicon.ico" rel="shortcut icon" />
@@ -58,7 +59,7 @@
 
 </head>
 
-<body id="<?php echo $app->getPageId(); ?>" class="">
+<body id="<?php echo $app->getPageId(); ?>"  class="push wrap">
 	<div class="container">
 		<nav class="text-center" id="menu-holder">
 			<ul class="inline" id="main-menu">
