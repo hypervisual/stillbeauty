@@ -1,4 +1,4 @@
-* { box-sizing: border-box; }
+* { box-sizing: border-box; -moz-box-sizing: border-box; }
 body, html { height: 100%; }
 
 /***
@@ -112,6 +112,7 @@ hr {
 	background: $white; 
 	min-height: 100%;
 	position: relative;
+	margin-top: 60px;
 }
 
 .inline { 
@@ -283,4 +284,22 @@ a.cart {
 			content: '';
 		}
 	}
+}
+
+#ribbon-link {
+	display: block;
+	background: url(../images/ribbon.png) no-repeat;
+	position: absolute;
+	font-family: $heading-font;
+	top: -22px;
+	left: 263px;
+	width: 421px;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	color: $white;
+	font-size: 18px;
+	letter-spacing: 1px;
+	border-bottom: none !important;
+	text-decoration: underline;
 }

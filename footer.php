@@ -48,6 +48,8 @@ global $app;
 			</div>
 		</div>
 
+		<a id="ribbon-link" href="/mothers-day-offer/">PURCHASE YOUR MOTHER'S DAY GIFT VOUCHER</a>
+
 	</div>  <!-- .container -->
 
 

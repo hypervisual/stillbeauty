@@ -1,0 +1,70 @@
+/* line 1, scss/404.scss */
+body, html {
+  height: 100%;
+}
+
+/***
+ Variables
+ ***/
+/* line 16, scss/404.scss */
+body {
+  background: white url("../images/clouds-bg-dark.jpg") fixed;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* line 25, scss/404.scss */
+div {
+  position: fixed;
+  display: table;
+  top: 50%;
+  left: 50%;
+  margin: -80px 0 0 -80px;
+  width: 160px;
+  height: 160px;
+  border-radius: 80px;
+  background: #09262c;
+}
+/* line 36, scss/404.scss */
+div > div {
+  position: static;
+  border-radius: 0;
+  background: transparent;
+  display: table-cell;
+  color: white;
+  vertical-align: middle;
+  text-align: center;
+}
+/* line 45, scss/404.scss */
+div > div h4 {
+  margin: 0;
+  text-transform: uppercase;
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+/* line 55, scss/404.scss */
+div > div h5 {
+  margin: 10px 0 0 0;
+  text-transform: uppercase;
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+/* line 64, scss/404.scss */
+div > div h5 a {
+  color: #849295;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #849295;
+  text-decoration: none;
+}
+/* line 70, scss/404.scss */
+div > div h5 a:hover {
+  color: white;
+  border-color: white;
+}
