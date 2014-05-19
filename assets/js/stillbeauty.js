@@ -337,7 +337,12 @@ $(document).ready(function () {
 
     if ($('#checkout-form').length) $('#checkout-form').submit();
 
+
     StillBeauty.App.Infotip.init();
-    StillBeauty.App.Modal.init();
+    StillBeauty.App.Modal.init();        
+
+
+
+
 
 });

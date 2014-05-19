@@ -117,7 +117,7 @@ class StillBeautyAdminPage {
             $data['redeem'] = "<p style='margin: 1em 0; line-height: 2;'>Either jump onto our website and request a booking, or call Joanna 0488 416 555.</p>";
 
         } else {
-            $data['intro'] = "<p style='margin: 1em 0; line-height: 2;'>This voucher is a <strong>$" . number_format($_POST['value'], 2) . "</strong> gift to you from <strong>" . $data['fname_sender'] . " " . $data['lname_sender'] . "</strong> that may be put toward any product or treatment from Still Beauty!</p>";
+            $data['intro'] = "<p style='margin: 1em 0; line-height: 2;'>This voucher is a <strong>$" . number_format($data['value'], 2) . "</strong> gift to you from <strong>" . $data['fname_sender'] . " " . $data['lname_sender'] . "</strong> that may be put toward any product or treatment from Still Beauty!</p>";
             $data['redeem'] = "<p style='margin: 1em 0; line-height: 2;'>Visit www.stillbeauty.com.au choose what you'd like to do with your voucher.<br>You can make an online booking request for a treatment, or call Joanna on 0488 416 555.<br>To arrange product purchases using this voucher, please call Joanna.</p><p style='margin: 1em 0; line-height: 2;'>To arrange product purchases using this voucher, please call Joanna.</p>";
         }
 
@@ -152,7 +152,7 @@ class StillBeautyAdminPage {
             $data['redeem'] = "<p style='margin: 1em 0; line-height: 2;'>Either jump onto our website and request a booking, or call Joanna 0488 416 555.</p>";
 
         } else {
-            $data['intro'] = "<p class='margin: 1em 0; line-height: 2;'>This voucher is a <strong>$" . number_format($_POST['value'], 2) . "</strong> gift to you from <strong>" . $data['fname_sender'] . " " . $data['lname_sender'] . "</strong> that may be put toward any product or treatment from Still Beauty!</p>";
+            $data['intro'] = "<p class='margin: 1em 0; line-height: 2;'>This voucher is a <strong>$" . number_format($data['value'], 2) . "</strong> gift to you from <strong>" . $data['fname_sender'] . " " . $data['lname_sender'] . "</strong> that may be put toward any product or treatment from Still Beauty!</p>";
             $data['redeem'] = "<p class='margin: 1em 0; line-height: 2;'>Visit www.stillbeauty.com.au choose what you'd like to do with your voucher.<br>You can make an online booking request for a treatment, or call Joanna on 0488 416 555.<br>To arrange product purchases using this voucher, please call Joanna.</p><p style='margin: 1em 0; line-height: 2;'>To arrange product purchases using this voucher, please call Joanna.</p>";
         }
 

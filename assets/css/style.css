@@ -326,6 +326,54 @@ a.cart span::after {
   text-decoration: underline;
 }
 
+/* line 307, scss/_general.scss */
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-device-width: 320px) {
+  /* line 313, scss/_general.scss */
+  .mobile {
+    display: block;
+  }
+
+  /* line 317, scss/_general.scss */
+  body {
+    background: url(../images/login_bg.jpg) fixed !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  /* line 325, scss/_general.scss */
+  #menu-holder {
+    display: none;
+  }
+
+  /* line 329, scss/_general.scss */
+  .container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  /* line 335, scss/_general.scss */
+  .offset1, .offset2 {
+    margin: 0;
+  }
+
+  /* line 339, scss/_general.scss */
+  .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span10 {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* line 345, scss/_general.scss */
+  #home .container {
+    background: transparent;
+  }
+}
 /* line 3, scss/_about.scss */
 #about p img.alignleft {
   float: left;
