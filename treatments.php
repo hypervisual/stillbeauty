@@ -7,6 +7,9 @@ get_header();
 ?>
 	<?php if (have_posts()) : ?>
     <?php while (have_posts()) : the_post(); ?>
+        <div class="mobile banner">
+                <section id="logo" class="mobile"><a href="/"><img src="<?php echo site_url() . '/wp-content/themes/stillbeauty/assets/images/still-blue.png'; ?>" alt="Still Beauty" /></a></section>
+        </div>
         <div class="span10 page">
             <h1><?php the_title(); ?></h1>
 
@@ -20,7 +23,7 @@ get_header();
             ?>
 
             <nav>
-                <ul id="treatments-menu" class="inline">
+                <ul id="treatments-menu" class="inline desktop">
                 <?php
                 foreach($categories as $category) :
                 ?>
@@ -33,11 +36,15 @@ get_header();
 
             <?php 
             $firstcat = 1;
+            $i = 0;
             foreach($categories as $category) :
                 $style = ($firstcat) ? '' : 'style="display: none;"';
+                $classname = ($firstcat) ? 'active' : '';
+                $arrow = ($firstcat) ? 'ion-ios7-arrow-up' : 'ion-ios7-arrow-down';
                 $firstcat = 0;
             ?>
-                <div id="<?php echo $category->post_name; ?>" class="category" <?php echo $style; ?>>
+                <h4 class="mobile accordion accordion-<?php echo ++$i; ?>"><a href="#<?php echo $category->post_name; ?>" class="js-accordion-toggle"><span class="<?php echo $arrow; ?>"></span><?php echo $category->post_name; ?></a></h4>
+                <div id="<?php echo $category->post_name; ?>" class="category <?php echo $classname; ?>" <?php echo $style; ?>>
             <?php
                 $products = get_pages(array(
                         'child_of' => $category->ID,

@@ -23,7 +23,7 @@
 
 	?></title>
 
-	<meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0;">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<link href="favicon.ico" rel="shortcut icon" />
@@ -61,7 +61,10 @@
 
 <body id="<?php echo $app->getPageId(); ?>"  class="push wrap">
 	<div class="container">
-		<nav class="text-center" id="menu-holder">
+
+		<a href="#main-menu" class="mobile menu-link"><span class="ion-navicon-round"></span> Menu</a>
+
+		<nav class="text-center desktop" id="menu-holder">
 			<ul class="inline" id="main-menu">
 				<li><a href="/about">About</a></li>
 				<li><a href="/treatments">Treatments</a></li>
@@ -72,3 +75,5 @@
 				<li><a href="/contact">Contact</a></li>
   			</ul>
   		</nav>  <!-- #menu-holder -->
+
+  		

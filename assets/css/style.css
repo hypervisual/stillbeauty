@@ -331,49 +331,11 @@ a.cart span::after {
   display: none;
 }
 
-@media only screen and (max-device-width: 320px) {
-  /* line 313, scss/_general.scss */
-  .mobile {
-    display: block;
-  }
-
-  /* line 317, scss/_general.scss */
-  body {
-    background: url(../images/login_bg.jpg) fixed !important;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
-
-  /* line 325, scss/_general.scss */
-  #menu-holder {
-    display: none;
-  }
-
-  /* line 329, scss/_general.scss */
-  .container {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-  }
-
-  /* line 335, scss/_general.scss */
-  .offset1, .offset2 {
-    margin: 0;
-  }
-
-  /* line 339, scss/_general.scss */
-  .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span10 {
-    width: 100%;
-    margin: 0;
-  }
-
-  /* line 345, scss/_general.scss */
-  #home .container {
-    background: transparent;
-  }
+/* line 311, scss/_general.scss */
+.desktop {
+  display: block;
 }
+
 /* line 3, scss/_about.scss */
 #about p img.alignleft {
   float: left;
@@ -1155,4 +1117,477 @@ a.cart span::after {
   line-height: 1.4;
   font-weight: normal;
   text-transform: none;
+}
+
+@media only screen and (max-device-width: 320px) {
+  /* line 3, scss/_mobile.scss */
+  .mobile {
+    display: block;
+  }
+
+  /* line 7, scss/_mobile.scss */
+  .desktop {
+    display: none;
+  }
+
+  /* line 11, scss/_mobile.scss */
+  body {
+    background-image: url(../images/login_bg.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  /* line 21, scss/_mobile.scss */
+  .banner {
+    padding: 30px;
+    margin-top: 60px;
+    background: url(../images/clouds-bg-light.jpg) center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  /* line 30, scss/_mobile.scss */
+  .banner h1 {
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    padding: 0;
+  }
+
+  /* line 39, scss/_mobile.scss */
+  #main-menu {
+    display: none;
+  }
+
+  /* line 43, scss/_mobile.scss */
+  .menu-link {
+    position: absolute;
+    top: 18px;
+    left: 14px;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    border: 0;
+  }
+  /* line 53, scss/_mobile.scss */
+  .menu-link span {
+    color: inherit !important;
+    font-size: 24px;
+  }
+
+  /* line 59, scss/_mobile.scss */
+  section#logo {
+    padding: 0;
+    text-align: center;
+  }
+  /* line 63, scss/_mobile.scss */
+  section#logo a {
+    display: block;
+    border: 0;
+  }
+  /* line 68, scss/_mobile.scss */
+  section#logo img {
+    width: 100px;
+    display: inline-block;
+    margin: 0 auto;
+  }
+
+  /* line 75, scss/_mobile.scss */
+  .container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  /* line 81, scss/_mobile.scss */
+  .panel {
+    position: fixed;
+    left: -210px;
+    /*left or right and the width of your navigation panel*/
+    width: 210px;
+    /*should match the above value*/
+  }
+
+  /* line 87, scss/_mobile.scss */
+  .wrap {
+    position: relative;
+  }
+
+  /* line 91, scss/_mobile.scss */
+  #home-nav {
+    margin: 35px 0 0 0;
+    padding: 0 28px;
+  }
+  /* line 95, scss/_mobile.scss */
+  #home-nav ul {
+    margin: 0;
+    list-style-type: none;
+  }
+  /* line 99, scss/_mobile.scss */
+  #home-nav ul li {
+    float: none;
+  }
+  /* line 102, scss/_mobile.scss */
+  #home-nav ul li a {
+    font-family: 'Oswald', sans-serif;
+    display: block;
+    padding: 14px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    border-color: rgba(9, 38, 44, 0.5);
+    color: rgba(9, 38, 44, 0.5);
+  }
+  /* line 115, scss/_mobile.scss */
+  #home-nav ul li a:hover {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    background: rgba(9, 38, 44, 0.25);
+  }
+
+  /* line 124, scss/_mobile.scss */
+  .wrap {
+    position: relative;
+  }
+
+  /* line 128, scss/_mobile.scss */
+  .offset1, .offset2 {
+    margin: 0;
+  }
+
+  /* line 132, scss/_mobile.scss */
+  .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span10 {
+    width: 100%;
+    margin: 0;
+    float: none !important;
+  }
+
+  /* line 138, scss/_mobile.scss */
+  h1 {
+    margin: 25px 0;
+    font-size: 30px;
+  }
+
+  /* line 143, scss/_mobile.scss */
+  h4 {
+    line-height: 1.4;
+  }
+
+  /* line 148, scss/_mobile.scss */
+  #home .container {
+    background: transparent;
+  }
+  /* line 152, scss/_mobile.scss */
+  #home .banner {
+    padding: 20px 0;
+  }
+  /* line 156, scss/_mobile.scss */
+  #home h1 {
+    border: 0;
+  }
+  /* line 160, scss/_mobile.scss */
+  #home h3 {
+    padding: 0 20px;
+    font-size: 24px;
+    color: white;
+  }
+  /* line 166, scss/_mobile.scss */
+  #home .menu-link {
+    color: white;
+  }
+
+  /* line 173, scss/_mobile.scss */
+  #treatments .button {
+    width: 80%;
+    padding: 15px 20px;
+    margin: 0 auto;
+  }
+  /* line 179, scss/_mobile.scss */
+  #treatments hr {
+    margin: 20px 0;
+  }
+  /* line 183, scss/_mobile.scss */
+  #treatments aside {
+    padding: 20px;
+  }
+  /* line 186, scss/_mobile.scss */
+  #treatments aside h6 {
+    margin: 0 0 20px 0;
+  }
+  /* line 191, scss/_mobile.scss */
+  #treatments div > img {
+    display: block;
+    margin: 0 auto;
+  }
+  /* line 196, scss/_mobile.scss */
+  #treatments .category.active {
+    display: block;
+    margin: 14px 0;
+  }
+  /* line 201, scss/_mobile.scss */
+  #treatments .contraindications {
+    display: block;
+    position: relative;
+    background: #eee;
+    padding: 20px;
+  }
+  /* line 207, scss/_mobile.scss */
+  #treatments .contraindications h5 {
+    margin: 1px 0 0 0;
+  }
+  /* line 210, scss/_mobile.scss */
+  #treatments .contraindications h5 a {
+    display: block;
+    font-size: 28px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  /* line 219, scss/_mobile.scss */
+  #treatments .contraindications h6 {
+    width: 75%;
+  }
+  /* line 223, scss/_mobile.scss */
+  #treatments .contraindications p {
+    background: #eee;
+    font-size: 12px;
+  }
+  /* line 229, scss/_mobile.scss */
+  #treatments .price-badge {
+    display: block;
+    margin: 0 auto 20px !important;
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50px !important;
+    line-height: 100px !important;
+    font-size: 30px !important;
+  }
+
+  /* line 240, scss/_mobile.scss */
+  .accordion {
+    margin: 0 0 1px 0;
+    background: #f2f4f4;
+  }
+  /* line 244, scss/_mobile.scss */
+  .accordion span[class^=ion-] {
+    float: right;
+    color: #09262c;
+  }
+  /* line 249, scss/_mobile.scss */
+  .accordion a {
+    color: #09262c;
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    padding: 14px 28px;
+    text-decoration: none;
+    border: 0;
+  }
+
+  /* line 262, scss/_mobile.scss */
+  #products .product-block.open h4 a span[class^="ion"] {
+    margin-top: 4px;
+  }
+  /* line 266, scss/_mobile.scss */
+  #products .product-block ul > li {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  /* line 272, scss/_mobile.scss */
+  #products .product-block ul > li > ul li:first-child {
+    width: 33%;
+  }
+  /* line 276, scss/_mobile.scss */
+  #products .product-block ul > li > ul li {
+    width: 67%;
+  }
+  /* line 280, scss/_mobile.scss */
+  #products .product-block ul > li > ul li:first-child .addToCart {
+    border-radius: 0;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 14px;
+    text-align: center;
+  }
+  /* line 288, scss/_mobile.scss */
+  #products .product-block > hr {
+    margin: 0 0 10px 0;
+  }
+
+  /* line 294, scss/_mobile.scss */
+  .ajax-form section h5 {
+    font-size: 18px;
+  }
+  /* line 298, scss/_mobile.scss */
+  .ajax-form label {
+    font-size: 16px;
+    width: 75%;
+  }
+  /* line 303, scss/_mobile.scss */
+  .ajax-form section div input[type=text], .ajax-form section div textarea {
+    font-size: 16px !important;
+    padding: 7px 14px !important;
+    width: 100% !important;
+  }
+  /* line 310, scss/_mobile.scss */
+  .ajax-form section div input[type=text].medium,
+  .ajax-form section div textarea.medium {
+    width: 75% !important;
+  }
+  /* line 315, scss/_mobile.scss */
+  .ajax-form .checkbox.inline + .checkbox.inline,
+  .ajax-form .radio.inline + .radio.inline {
+    margin-left: 0;
+  }
+  /* line 319, scss/_mobile.scss */
+  .ajax-form .radio.inline {
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  /* line 325, scss/_mobile.scss */
+  .ajax-form .checkbox input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  /* line 329, scss/_mobile.scss */
+  .ajax-form input.datepicker.small {
+    width: 42%;
+  }
+  /* line 334, scss/_mobile.scss */
+  .ajax-form div.bootstrap-timepicker.inline {
+    width: 25% !important;
+  }
+  /* line 338, scss/_mobile.scss */
+  .ajax-form label.inline {
+    width: auto;
+  }
+  /* line 342, scss/_mobile.scss */
+  .ajax-form input.button.button-primary {
+    padding: 15px 20px;
+    border-radius: 0;
+  }
+
+  /* line 348, scss/_mobile.scss */
+  footer #copyright {
+    color: #09262c;
+  }
+
+  /* line 352, scss/_mobile.scss */
+  footer h3 {
+    letter-spacing: 1px;
+    font-size: 20px;
+  }
+
+  /* line 357, scss/_mobile.scss */
+  #about .image-row li {
+    padding: 0 5px !important;
+  }
+
+  /* line 361, scss/_mobile.scss */
+  .page {
+    padding: 0 20px;
+  }
+
+  /* line 365, scss/_mobile.scss */
+  #menu {
+    height: 100%;
+    background: #09262c;
+  }
+  /* line 369, scss/_mobile.scss */
+  #menu ul {
+    margin: 0;
+  }
+  /* line 372, scss/_mobile.scss */
+  #menu ul li {
+    float: none;
+    display: block;
+    border-bottom: 1px solid #3a5156;
+  }
+  /* line 377, scss/_mobile.scss */
+  #menu ul li a {
+    font-family: 'Oswald', sans-serif;
+    display: block;
+    padding: 21px;
+    font-size: 20px;
+    text-transform: uppercase;
+    border: 0;
+  }
+  /* line 386, scss/_mobile.scss */
+  #menu ul li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: #223c42;
+  }
+
+  /* line 395, scss/_mobile.scss */
+  p, p.span7 {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0 0 16px 0;
+    width: 100%;
+  }
+
+  /* line 402, scss/_mobile.scss */
+  .modal-popup {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* line 409, scss/_mobile.scss */
+  .modal-message {
+    padding: 40% 20px 20px 20px;
+    color: white;
+    border: 0;
+    background: rgba(0, 0, 0, 0.65);
+  }
+  /* line 416, scss/_mobile.scss */
+  .modal-message p {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  /* line 422, scss/_mobile.scss */
+  .modal-close {
+    font-size: 36px;
+    top: 20px;
+    right: 20px;
+  }
+
+  /* line 428, scss/_mobile.scss */
+  .modal-close::before {
+    color: white;
+  }
+
+  /* line 432, scss/_mobile.scss */
+  .formErrorArrow {
+    display: none;
+  }
+
+  /* line 436, scss/_mobile.scss */
+  .formError {
+    width: auto;
+    border: 0;
+    margin: 10px 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    position: static !important;
+  }
+  /* line 444, scss/_mobile.scss */
+  .formError .formErrorContent {
+    background: transparent;
+    padding: 0;
+    border: 0;
+    text-transform: uppercase;
+  }
 }

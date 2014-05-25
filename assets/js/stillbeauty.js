@@ -7,6 +7,56 @@ $.fn.outerHtml = function() { return $(this).clone().wrap('<div></div>').parent(
 $.fn.serializeObject=function(){var o={};var a=this.serializeArray();$.each(a,function(){if(o[this.name]!==undefined){if(!o[this.name].push){o[this.name]=[o[this.name]];}o[this.name].push(this.value||"");}else{o[this.name]=this.value||"";}});return o;};
 
 $(document).ready(function () {
+    var isMobile = $('.menu-link').is(':visible');
+    console.log('isMobile ['+isMobile+']');
+
+    if (isMobile) {
+        $('.menu-link').bigSlide({
+            menuWidth: '210px'
+        });
+
+        $('.js-accordion-toggle').on('click', function(e) {
+            e.preventDefault();
+
+            if ($('span.ion-ios7-arrow-up', $(this)).length) {
+                $('span.ion-ios7-arrow-up', $(this)).removeClass('ion-ios7-arrow-up').addClass('ion-ios7-arrow-down');
+                $('.category.active').removeClass('active').hide();
+            } else {
+                if ($('span.ion-ios7-arrow-up', $('.js-accordion-toggle')).length) {
+                    var $active = $('span.ion-ios7-arrow-up', $('.js-accordion-toggle'));
+                    $active.removeClass('ion-ios7-arrow-up').addClass('ion-ios7-arrow-down');
+                    $('.category.active').removeClass('active').hide();
+                }
+
+                $('span.ion-ios7-arrow-down', $(this)).removeClass('ion-ios7-arrow-down').addClass('ion-ios7-arrow-up');
+                $(this).parent('.accordion').next('.category').addClass('active').show();
+
+                //window.location.href = $(this).attr('href');
+                $('html, body').animate({
+                    scrollTop: $( $.attr(this, 'href') ).offset().top - 60
+                }, 500);
+
+            }
+        });
+
+        $('#treatments .infotip').on('click', function(e) {
+            e.preventDefault();
+
+            var tpl = '<div class="contraindications mobile"><h5 class="muted"><a href="#" class="close-contraindications"><span class="ion-ios7-close-outline"></span></a>%original-title%</h5><p>%content%</p></div>';
+            var html = tpl.replace('%original-title%', $(this).data('original-title'))
+                          .replace('%content%', $(this).data('content'));
+            $(this).parents('p').after(html);
+            $('.close-contraindications').on('click', function(e){
+                e.preventDefault();
+
+                $(this).off('click');
+                $(this).parents('.contraindications').remove();
+            });
+        });
+    } else {
+        StillBeauty.App.Infotip.init();
+        StillBeauty.App.Modal.init();
+    }
 
     var mutex = false;
 
@@ -338,8 +388,7 @@ $(document).ready(function () {
     if ($('#checkout-form').length) $('#checkout-form').submit();
 
 
-    StillBeauty.App.Infotip.init();
-    StillBeauty.App.Modal.init();        
+        
 
 
 

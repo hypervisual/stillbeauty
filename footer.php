@@ -48,15 +48,25 @@ global $app;
 			</div>
 		</div>
 
-		<a id="ribbon-link" href="/mothers-day-offer/">PURCHASE YOUR MOTHER'S DAY GIFT VOUCHER</a>
+		
 
 	</div>  <!-- .container -->
+
 
 
 	<div class="modal-cover"></div>
 	<div id="modal-message" class="modal-popup modal-message"></div>
 
-
+	<nav id="menu" class="panel mobile" role="navigation">
+		<ul>
+			<li><a href="/about">About</a></li>
+			<li><a href="/treatments">Treatments</a></li>
+			<li><a href="/products">Products</a></li>
+			<li><a href="/bookings">Bookings</a></li>
+			<li><a href="/vouchers">Vouchers</a></li>
+			<li><a href="/contact">Contact</a></li>
+		</ul>
+	</nav>
 <?php
 	wp_footer();
 ?>

@@ -308,42 +308,8 @@ a.cart {
   display: none;
 }
 
-@media only screen and (max-device-width: 320px) {
-
-	.mobile {
-	  display: block;
-	}
-
-	body { 
-		background: url(../images/login_bg.jpg) fixed !important;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
-	}
-
-	#menu-holder {
-		display: none;
-	}
-
-	.container {
-		margin: 0;
-		padding: 0;
-		width: 100%;
-	}
-
-	.offset1, .offset2 {
-		margin: 0;
-	}
-
-	.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span10 {
-		width: 100%;
-		margin: 0;
-	}
-
-	#home {
-		.container {
-			background: transparent;
-		}
-	}
+.desktop {
+	display: block;
 }
+
+
