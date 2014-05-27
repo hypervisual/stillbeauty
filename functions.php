@@ -69,7 +69,7 @@ Class StillBeautyApp {
 
 		// add css
 		foreach($data['css'] as $stylesheet) {
-			wp_enqueue_style($stylesheet['handle'], $stylesheet['src'], NULL, false, $stylesheet['media']);
+			wp_enqueue_style($stylesheet['handle'], $stylesheet['src'], NULL, "4.0.0", $stylesheet['media']);
 		}
 
 		// deregister wp jquery
@@ -77,7 +77,7 @@ Class StillBeautyApp {
 
 		// load scripts
 		foreach($data['js'] as $js) {
-			wp_enqueue_script($js['handle'], $js['src'], NULL, '', true);
+			wp_enqueue_script($js['handle'], $js['src'], NULL, '4.0.0', true);
 		}
 	}
 
