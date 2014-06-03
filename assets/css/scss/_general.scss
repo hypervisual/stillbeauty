@@ -288,7 +288,7 @@ a.cart {
 
 #ribbon-link {
 	display: block;
-	background: url(../images/ribbon.png) no-repeat;
+	background: url(../images/ribbon-orange.png) no-repeat;
 	position: absolute;
 	font-family: $heading-font;
 	top: -22px;
@@ -305,11 +305,11 @@ a.cart {
 }
 
 .mobile {
-  display: none;
+  display: none !important;
 }
 
 .desktop {
-	display: block;
+	display: block !important;
 }
 
 

@@ -48,9 +48,11 @@ global $app;
 			</div>
 		</div>
 
-		
+		<a id="ribbon-link" href="/hot-stone-massage-offer/" class="desktop">HOT STONE MASSAGE OFFER</a>
 
 	</div>  <!-- .container -->
+
+	
 
 
 

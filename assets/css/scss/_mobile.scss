@@ -1,11 +1,11 @@
 @media only screen and (max-device-width: 320px) {
 
 	.mobile {
-	  display: block;
+	  display: block !important;
 	}
 
 	.desktop {
-		display: none;
+		display: none !important;
 	}
 
 	body { 

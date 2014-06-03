@@ -310,7 +310,7 @@ a.cart span::after {
 /* line 289, scss/_general.scss */
 #ribbon-link {
   display: block;
-  background: url(../images/ribbon.png) no-repeat;
+  background: url(../images/ribbon-orange.png) no-repeat;
   position: absolute;
   font-family: "Oswald", Helvetica, Arial, sans-serif;
   top: -22px;
@@ -328,12 +328,12 @@ a.cart span::after {
 
 /* line 307, scss/_general.scss */
 .mobile {
-  display: none;
+  display: none !important;
 }
 
 /* line 311, scss/_general.scss */
 .desktop {
-  display: block;
+  display: block !important;
 }
 
 /* line 3, scss/_about.scss */
@@ -1122,12 +1122,12 @@ a.cart span::after {
 @media only screen and (max-device-width: 320px) {
   /* line 3, scss/_mobile.scss */
   .mobile {
-    display: block;
+    display: block !important;
   }
 
   /* line 7, scss/_mobile.scss */
   .desktop {
-    display: none;
+    display: none !important;
   }
 
   /* line 11, scss/_mobile.scss */
